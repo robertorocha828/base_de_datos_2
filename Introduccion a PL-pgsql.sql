@@ -23,10 +23,15 @@ end $$
 -- Asigancion de diferentes tipos de datos
 do $$
 declare
-nombre text := 'Roberto Rocha';
-edad int := '26';
-salario numeric := '1500';
+nombre text := 'Luciana';
+apellido text := 'Perez';
+sexo text := 'Femenino';
+edad int := '30';
+salario NUMERIC (10, 2) := 1500.00;
 activo boolean := true;
 begin
-	raise notice 'Nombre: %, Edad: %, Salario: %, Activo: %', nombre, edad, salario,activo;
+	raise notice 'Nombre: %, Apellido: %, Sexo: &, Edad: %, Salario: %, Activo: %', nombre, apellido, sexo, edad, salario,activo;
 end $$
+
+
+-- Calculo de salario anual de un empleado
