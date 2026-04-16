@@ -89,6 +89,12 @@ $$ language plpgsql;
 select * from obtener_empleado(4);
 
 
+
+
+
+
+
+
 --01
 create or replace function saludar(nombre varchar)
 returns varchar
