@@ -5,10 +5,10 @@ Docente: Ing.Christian Rivadeneira*/
 
 
 /*Pago impuesto predial
-tabla propiedades ((precios de casas) valor y nuemro de metroa 
+tabla propiedades (precios de casas) valor y nuemro de metroa 
 10 a 50  m 10% valor de de la propiedad 
 50 a 100 m 20%
-100 en adelante 30Ç% de la propiedad*/
+100 en adelante 30% de la propiedad*/
  create table tbl_impuesto_predial(
  	id serial primary key,
 	valor_propiedad int,
