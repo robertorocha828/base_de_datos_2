@@ -36,6 +36,10 @@ end;
 $$ language plpgsql;
 
 select fn_insertar_empleado ('Cristian Rivadeneira', 1500, 'Sistemas');
+select fn_insertar_empleado('Mariana Torres', 1250, 'Contabilidad');
+select fn_insertar_empleado('Roberto Gómez', 1800, 'Marketing');
+select fn_insertar_empleado('Elena Vizcaíno', 950, 'Logística');
+select fn_insertar_empleado('Javier Mendoza', 2200, 'Recursos Humanos');
 
 select * from tbl_empleados;
 

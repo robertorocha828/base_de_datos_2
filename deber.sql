@@ -38,15 +38,13 @@ $$ language plpgsql;
 
 -- lamar a la funcion
 select fn_insertar_empleado ('Cristin Rivadeneira', 1500, 'Sistemas');
-
-
-
-
+select fn_insertar_empleado('Mariana Torres', 1250, 'Contabilidad');
+select fn_insertar_empleado('Roberto Gómez', 1800, 'Marketing');
+select fn_insertar_empleado('Elena Vizcaíno', 950, 'Logística');
+select fn_insertar_empleado('Javier Mendoza', 2200, 'Recursos Humanos');
 
 
 /* actualizacion*/
-
-
 create or replace function fn_actualizar_empleado(i_id int, i_nombre varchar, i_salario numeric, i_departamento varchar) 
 returns text as $$
 begin
@@ -64,35 +62,31 @@ begin
 end;
 $$ language plpgsql;
 
-select fn_actualizar_empleado(5,'Micaela R', 1500, 'Sistemas')
+--Llamar funcion
+select fn_actualizar_empleado(5,'Micaela R', 1500, 'Sistemas');
+select fn_actualizar_empleado(16, 'Josue Ruiz Delgado', 1200, 'Recursos Humanos');
+select fn_actualizar_empleado(12, 'Roberto Rocha', 1800, 'Sistemas');
+select fn_actualizar_empleado(4, 'Eduardo Perez', 1500, 'Sistemas');
+select fn_actualizar_empleado(2, 'Hernan Varas', 1600, 'Gerencia');
 
 select * from tbl_empleados;
 
 
-
-
--- validaciones
-
-create or replace function fn_actualizar_empleado_(i_id int, i_nombre varchar, i_salario numeric, i_departamento varchar) 
-returns text as $$
+-- eliminacion
+create or replace function fn_eliminacion_empleado (i_id int) returns text as $$
 begin
-    if i_salario <= 0 then
-        return 'el salario no puede ser cero';
+    if not exists(select * from tbl_empleados where id = i_id) then
+        raise notice 'El empleado con la id %, no existe', i_id;
     end if;
-    update tbl_empleados 
-    set nombre = i_nombre, 
-        salario = i_salario, 
-        departamento = i_departamento
-    where id = i_id;
-
-    if found then
-        return 'actualizacion exitosa';
-    else
-        return 'no se pudo actualizar, id no encontrado';
-    end if;      
+    delete from tbl_empleados where id=i_id;
+    return 'Eliminacion de empleado con la id %, correcta', i_id;
 end;
 $$ language plpgsql;
 
-select fn_actualizar_empleado_(555,'Micaela R', 1500, 'Sistemas')
-
+-- llamar funcion
+select fn_eliminacion_empleado(5);
+select fn_eliminacion_empleado(12);
+select fn_eliminacion_empleado(16);
+select fn_eliminacion_empleado(4);
+select fn_eliminacion_empleado(2);
 
