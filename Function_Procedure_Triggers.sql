@@ -49,6 +49,29 @@ select * from tbl_empleados;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 create or replace function fn_actualizacion_sueldo()
 returns trigger as $$
 begin

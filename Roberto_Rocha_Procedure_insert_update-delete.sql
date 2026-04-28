@@ -91,3 +91,38 @@ select fn_eliminacion_empleado(16);
 select fn_eliminacion_empleado(4);
 select fn_eliminacion_empleado(2);
 
+
+
+
+
+
+
+
+
+
+    if not exists(select 1 from tbl_paciente where id_paciente = i_id) then
+        raise exception 'El paciente con ID % no existe.', i_id;
+    end if;
+
+
+
+exception 
+    when check_violation then
+        raise exception 'Error de validación: Revisa el tipo de sangre (%) o estado civil (%).', i_sangre, i_est_civil;
+    when others then
+        raise exception 'Error inesperado: %', SQLERRM;
+
+
+
+
+
+    -- 1. Verificamos si el paciente existe
+    if not exists(select 1 from tbl_paciente where id_paciente = i_id) then
+        raise notice 'El paciente con ID % no existe, no se puede eliminar.', i_id;
+    else
+
+
+
+    exception 
+    when others then
+        raise exception 'Ocurrió un error al intentar eliminar: %', SQLERRM;
