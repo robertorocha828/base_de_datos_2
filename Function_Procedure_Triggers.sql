@@ -1,3 +1,8 @@
+/* Nombre: Roberto Rochaalter 
+Fecha: 28/04/2026
+Tema: Trigger
+Docente: Ing.Christian Rivadeneira*/
+
 create table tbl_empleados(
  	id serial primary key,
 	nombre varchar(100),
@@ -25,13 +30,10 @@ begin
 end;
 $$ language plpgsql;
 
-
 create trigger trg_sueldo_actualizado
 before update on tbl_empleados
 for each row
 execute function fn_actualizar_sueldo();
-
-
 
 UPDATE tbl_empleados 
 SET salario = -200 
@@ -39,6 +41,11 @@ WHERE nombre = 'Roberto Rocha';
 
 
 select * from tbl_empleados;
+
+
+
+
+
 
 
 
